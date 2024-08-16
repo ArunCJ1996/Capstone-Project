@@ -25,7 +25,7 @@ pipeline {
        }
        stage('Docker login') {
             steps { 
-                withCredentials([usernamePassword(credentialsId: 'Dockercred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                 sh "echo $PASS | docker login -u $USER --password-stdin"
                 sh 'docker push arun2512/jenkins-react:v1'
                 }
